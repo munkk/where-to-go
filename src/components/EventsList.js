@@ -191,7 +191,7 @@ class EventsList extends Component {
   };
 
   goToDetails = event => {
-    this.props.history.push("" + event.id);
+    this.props.history.push("events/" + event.id);
   };
 
   canRender = () => {

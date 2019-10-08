@@ -30,7 +30,9 @@ function App() {
           <Switch>
             <Route exact path="/" component={EventsList} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/:id" component={EventDetails} />
+            <Route exact path="/events/:id" component={EventDetails} />
+
+            <Route path="*" component={EventsList} />
           </Switch>
         </ThemeProvider>
       </BrowserRouter>
