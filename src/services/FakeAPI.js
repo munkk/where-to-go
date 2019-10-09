@@ -1,7 +1,7 @@
 const events = [
   {
     id: 1,
-    title: "Вечер живого джаза",
+    title: "Live jazz evening",
     description: "Описание здесь",
     price: 300,
     type: "concert",
@@ -10,7 +10,7 @@ const events = [
   },
   {
     id: 2,
-    title: "Выставка Илья Репин",
+    title: "Ilya Repin exhibition",
     description: "Описание здесь",
     price: 200,
     type: "exhibition",
@@ -19,7 +19,7 @@ const events = [
   },
   {
     id: 3,
-    title: "Вечеринка на теплоходе",
+    title: "Boat party",
     description: "Описание здесь",
     price: 500,
     type: "party",
@@ -28,7 +28,7 @@ const events = [
   },
   {
     id: 4,
-    title: "Выставка «Дополненная реальность»",
+    title: "Augmented Reality exhibition",
     description: "Описание здесь",
     price: 1500,
     type: "exhibition",
@@ -37,7 +37,7 @@ const events = [
   },
   {
     id: 5,
-    title: "Концерт Chrysta Bell ",
+    title: "Chrysta Bell concert",
     description: "Описание здесь",
     price: 1200,
     type: "concert",
@@ -46,7 +46,7 @@ const events = [
   },
   {
     id: 6,
-    title: "Показ фильма «Манхэттен»",
+    title: "Manhattan movie",
     description: "Описание здесь",
     price: 2500,
     type: "cinema",
