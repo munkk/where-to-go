@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes } from "hookrouter";
+import { useRoutes, setBasepath } from "hookrouter";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -21,6 +21,7 @@ const customTheme = createMuiTheme({
   }
 });
 
+setBasepath("/where-to-go");
 const routes = {
   "/": () => <Home />,
   "/profile": () => <Profile />,
