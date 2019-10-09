@@ -1,5 +1,6 @@
 const initState = {
-  events: []
+  events: [],
+  searchBy: ""
 };
 
 const rootReducer = (state = initState, action) => {
@@ -34,6 +35,54 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         events: [...newEvents]
+      };
+    }
+    case "sort-in-ASC-order": {
+      const copy = state.events.slice();
+      const sorted = copy.sort((a, b) => a.price - b.price);
+      return {
+        ...state,
+        events: [...sorted]
+      };
+    }
+    case "sort-in-DES-order": {
+      const copy = state.events.slice();
+      const sorted = copy.sort((a, b) => b.price - a.price);
+      return {
+        ...state,
+        events: [...sorted]
+      };
+    }
+    case "check-on": {
+      const filtered = state.events.map(event => {
+        if (event.type === action.state) {
+          return { ...event, visible: true };
+        }
+
+        return event;
+      });
+      return {
+        ...state,
+        events: [...filtered]
+      };
+    }
+    case "check-off": {
+      const filtered = state.events.map(event => {
+        if (event.type === action.state) {
+          return { ...event, visible: false };
+        }
+
+        return event;
+      });
+      return {
+        ...state,
+        events: [...filtered]
+      };
+    }
+    case "search": {
+      return {
+        ...state,
+        searchBy: action.value
       };
     }
     default:

@@ -1,13 +1,11 @@
-import React, { Component } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import React from "react";
+import { A } from "hookrouter";
 
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 
-const styles = theme => ({
+const useStyles = makeStyles({
   logo: {
     width: "154px",
     cursor: "pointer"
@@ -16,40 +14,29 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "space-between",
     width: "80%",
-    margin: "0 auto"
+    margin: "0 auto",
+    "& a": {
+      textDecoration: "none",
+      color: "white"
+    }
   }
 });
 
-class Navbar extends Component {
-  goToHome = () => {
-    this.props.history.push("/");
-  };
+export default function Navbar() {
+  const classes = useStyles();
 
-  goToProfile = () => {
-    this.props.history.push("/profile");
-  };
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <AppBar position="static">
-        <Toolbar className={classes.toolbar}>
+  return (
+    <AppBar position="static">
+      <Toolbar className={classes.toolbar}>
+        <A href="/">
           <img
             alt="logo"
-            onClick={this.goToHome}
             className={classes.logo}
             src="https://static-6441fa1c.kudago.com/img/logo-white.svg"
           />
-          <Button color="inherit" onClick={this.goToProfile}>
-            Профиль
-          </Button>
-        </Toolbar>
-      </AppBar>
-    );
-  }
+        </A>
+        <A href="/profile">Profile</A>
+      </Toolbar>
+    </AppBar>
+  );
 }
-
-export default compose(
-  withStyles(styles),
-  withRouter
-)(Navbar);

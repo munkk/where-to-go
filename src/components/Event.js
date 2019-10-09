@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { navigate } from "hookrouter";
 
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
@@ -53,7 +54,7 @@ export default function Event(props) {
   };
 
   const goToDetails = () => {
-    props.goToDetails && props.goToDetails(props.event);
+    navigate(`event/${props.event.id}`);
   };
 
   return (

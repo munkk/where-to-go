@@ -1,13 +1,13 @@
 import React from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
-import "./App.css";
+import { useRoutes } from "hookrouter";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 
+import "App.css";
 import Profile from "components/Profile";
 import Navbar from "components/Navbar";
-import EventsList from "components/EventsList";
+import Home from "components/Home";
 import EventDetails from "components/EventDetails";
 
 const customTheme = createMuiTheme({
@@ -21,23 +21,22 @@ const customTheme = createMuiTheme({
   }
 });
 
-function App() {
+const routes = {
+  "/": () => <Home />,
+  "/profile": () => <Profile />,
+  "/event/:id": ({ id }) => <EventDetails id={id} />,
+  "/*": () => <Home />
+};
+
+export default function App() {
+  const routeResult = useRoutes(routes);
+
   return (
     <>
-      <BrowserRouter>
-        <ThemeProvider theme={customTheme}>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={EventsList} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/events/:id" component={EventDetails} />
-
-            <Route path="*" component={EventsList} />
-          </Switch>
-        </ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={customTheme}>
+        <Navbar />
+        {routeResult}
+      </ThemeProvider>
     </>
   );
 }
-
-export default App;

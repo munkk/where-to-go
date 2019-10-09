@@ -21,22 +21,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Profile(props) {
+export default function Profile() {
   const classes = useStyles();
-  const favorites = useSelector(state => state.events);
+  const events = useSelector(state => state.events);
 
   return (
     <div>
-      <h1 className={classes.title}>Избранное</h1>
+      <h1 className={classes.title}>Favorites</h1>
       <Grid container className={classes.list} spacing={2}>
-        {favorites &&
-          favorites
-            .filter(event => event.favorite)
-            .map((event, idx) => (
-              <Grid key={idx} item xs={12} md={6} lg={4}>
-                <Event event={event} />
-              </Grid>
-            ))}
+        {events
+          .filter(event => event.favorite)
+          .map((event, idx) => (
+            <Grid key={idx} item xs={12} md={6} lg={4}>
+              <Event event={event} />
+            </Grid>
+          ))}
       </Grid>
     </div>
   );
