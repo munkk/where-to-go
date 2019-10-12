@@ -32,9 +32,9 @@ export default function Home() {
     }
   });
 
-  const fetchData = async () => {
+  const fetchData = () => {
     try {
-      await FakeAPI.getEvents().then(data => {
+      FakeAPI.getEvents().then(data => {
         const events = data.slice().map(event => {
           return { ...event, favorite: false, visible: true };
         });
